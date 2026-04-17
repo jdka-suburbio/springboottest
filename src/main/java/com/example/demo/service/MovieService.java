@@ -37,4 +37,8 @@ public class MovieService {
         movies.add(movie);
         return movie;
     }
+
+    public boolean validMovie(MovieDTO movie) {
+        return movie.getTitle() != null && movie.getDirector() != null && movie.getYear() > 0;
+    }
 }

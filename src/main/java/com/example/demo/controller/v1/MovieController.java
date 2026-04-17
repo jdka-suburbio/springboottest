@@ -55,11 +55,12 @@ public class MovieController{
                     content = @Content(schema = @Schema(implementation = MovieDTO.class))),
             @ApiResponse(responseCode = "400", description = "Invalid input")
     })
+
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Add a new movie")
     public MovieDTO postMovie(@RequestBody MovieDTO movie)
     {
-        if (movie.getTitle() == null || movie.getDirector() == null || movie.getYear() <= 0) {
+        if (movieService.validMovie(movie)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid movie data");
         }
         return movieService.addMovie(movie);
