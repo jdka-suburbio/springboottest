@@ -25,7 +25,7 @@ public class MesEntity {
         return nommes;
     }
 
-    public void setNomes(String nommes) {
+    public void setNommes(String nommes) {
         this.nommes = nommes;
     }
 }
